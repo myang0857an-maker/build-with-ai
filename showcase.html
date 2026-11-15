@@ -428,11 +428,19 @@
 
     <!--
         ADD PROJECTS HERE — one { ... } per project.
-        builder: initials only (e.g. "M.K.")
+        builder: optional initials only (e.g. "M.K.")
         url:     the live site (e.g. Netlify). Leave "" to show "Coming soon".
     -->
     <script>
         const PROJECTS = [
+            {
+                title: "Marine Biology",
+                builder: "",
+                tag: "Video",
+                description: "A short marine biology video.",
+                url: "",
+                video: "videos/marine-biology.mp4"
+            },
             {
                 title: "LogoClip Studio — The Ad",
                 builder: "K.",
@@ -543,11 +551,14 @@
             top.className = "card-top";
             const h2 = document.createElement("h2");
             h2.textContent = p.title;
-            const builder = document.createElement("div");
-            builder.className = "builder";
-            builder.textContent = p.builder;
-            builder.title = "Built by " + p.builder;
-            top.append(h2, builder);
+            top.appendChild(h2);
+            if (p.builder) {
+                const builder = document.createElement("div");
+                builder.className = "builder";
+                builder.textContent = p.builder;
+                builder.title = "Built by " + p.builder;
+                top.appendChild(builder);
+            }
 
             const tag = document.createElement("span");
             tag.className = "tag";
